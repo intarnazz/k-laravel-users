@@ -1,0 +1,68 @@
+version: '3.8'
+
+#  docker-compose exec --user=root app bash
+#  chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+#  chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+#  chown -R www-data:www-data /var/www
+#  chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+
+services:
+    app:
+        build:
+            context: .
+        container_name: users
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - app-network
+
+    webserver:
+        image: nginx:alpine
+        container_name: users_webserver
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - "8000:80"
+        networks:
+            - app-network
+        depends_on:
+            - app
+
+    db:
+        image: mysql:5.7
+        container_name: users_db
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: laravel
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        volumes:
+            - dbdata:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - app-network
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: users_phpmyadmin
+        ports:
+            - "8080:80"
+        environment:
+            PMA_HOST: db
+            PMA_PORT: 3306
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    app-data:
+        driver: local
+    dbdata:
+        driver: local
