@@ -1,0 +1,198 @@
+:root {
+  --textColor: #333;
+  --black: #000;
+  --white: #fff;
+  --mainColor: #ff5722;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  color: var(--textColor);
+  background-color: #fff;
+  font-size: 16px;
+}
+
+#app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.box-x {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gap {
+  gap: 1rem;
+}
+
+.gap2 {
+  gap: 2rem;
+}
+
+.flex {
+  flex: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-vertical {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9e9e9e;
+  border-radius: 6px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  color: #fff;
+}
+
+input:-moz-autofill {
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  color: #fff;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #000 !important;
+}
+
+input {
+  color: var(--textColor);
+  border: none;
+  background: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+button {
+  background: none;
+  cursor: pointer;
+  color: var(--textColor);
+  border: none;
+  user-select: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+a {
+  color: var(--textColor);
+  text-decoration: none;
+  user-select: none;
+}
+
+nav {
+  user-select: none;
+}
+
+select {
+  cursor: pointer;
+}
+
+.button {
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 100px;
+  padding: 1em 3em;
+  transition: .1s;
+  cursor: pointer;
+}
+
+.button_r {
+  background-color: #6e1515;
+}
+
+.button_b {
+  background-color: #15316e;
+}
+
+.button_w {
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.button_w:hover svg {
+  fill: hsl(133, 59%, 50%);
+}
+
+.button_w svg {
+  transition: .2s;
+  fill: rgba(0, 0, 0, .5);
+}
+
+.button:hover {
+  box-shadow: 0 0 10px hsl(133, 99%, 74%);
+  transform: scale(1.03);
+}
+
+.button_off:hover {
+  transform: scale(1);
+}
+
+.hover {
+  transition: .2s;
+}
+
+.hover:hover {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 10px;
+  margin: -10px 0 0px;
+}
+
+.mark {
+  font-size: 14px;
+  background-color: var(--mainColor);
+  padding: 1em 2em;
+  border-radius: 100px;
+  animation: 60s infinite alternate mark-animation;
+}

@@ -10,11 +10,6 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    /**
-     * Регистрация в системе
-     * @param registerRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
     public function reg(RegisterRequest $request)
     {
         $user = User::create($request->validated());
@@ -28,11 +23,6 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Авторизация в системе
-     * @param LoginRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
     public function login(LoginRequest $request)
     {
         $user = auth()->attempt($request->validated());
@@ -54,10 +44,6 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Выход из системы
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
     public function logout()
     {
         $user = auth()->user();

@@ -13,6 +13,8 @@ services:
             - app-data:/var/www
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
             - app-storage:/var/www/storage
+            - app-resources:/var/www/resources
+            - app-routes:/var/www/routes
         networks:
             - app-network
 
@@ -65,4 +67,8 @@ volumes:
     dbdata:
         driver: local
     app-storage:
+        driver: local
+    app-resources:
+        driver: local
+    app-routes:
         driver: local
