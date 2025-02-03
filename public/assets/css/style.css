@@ -133,51 +133,21 @@ select {
 }
 
 .button {
-  background-color: var(--black);
-  color: var(--white);
-  border-radius: 100px;
-  padding: 1em 3em;
-  transition: .1s;
-  cursor: pointer;
-}
-
-.button_r {
-  background-color: #6e1515;
-}
-
-.button_b {
-  background-color: #15316e;
-}
-
-.button_w {
-  padding: .5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
+  background: none;
   color: #000;
+  border-radius: 5px;
+  border: 4px solid rgba(0, 0, 0, .1);
+  padding: .5rem 1rem;
+  transition: .3s;
   cursor: pointer;
-  transition: .2s;
-}
-
-.button_w:hover svg {
-  fill: hsl(133, 59%, 50%);
-}
-
-.button_w svg {
-  transition: .2s;
-  fill: rgba(0, 0, 0, .5);
 }
 
 .button:hover {
-  box-shadow: 0 0 10px hsl(133, 99%, 74%);
-  transform: scale(1.03);
+  border: 4px solid rgba(100, 100, 255, .4);
 }
-
-.button_off:hover {
-  transform: scale(1);
+.button__active {
+  border: 4px solid rgba(50, 50, 255, .4);
 }
-
 .hover {
   transition: .2s;
 }

@@ -1,41 +1,91 @@
 <style>
-  .catalog {
+  .catalog__content {
     display: grid;
     align-items: start;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-column-gap: 2rem;
   }
 
-  img {
+  .catalog__item {
+    position: relative;
+  }
+
+  .catalog__item-info {
+    background: linear-gradient(to top, rgba(0, 0, 0, .9), rgba(0, 0, 0, 0));
     width: 100%;
+    height: 100%;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+  }
+
+  img {
+    background-color: rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    width: 100%;
+    border-radius: 5px;
   }
 </style>
 
 
-<section id="catalog" class="catalog box-x">
+<section class="catalog box-y gap">
+  @if(Request::is('catalog'))
+    <div class="box-x gap">
+      <a href="{{ route('catalog', ['page'=>1, 'order'=>'views']) }}"
+         class="button {{ $order=='views' ? 'button__active' : '' }}  ">
+        По популянонсти
+      </a>
+      <a href="{{ route('catalog', ['page'=>1, 'order'=>'price']) }}" class="button
+      {{ $order=='price' ? 'button__active' : '' }}
+      "
 
+      >
+        По цене
+      </a>
+      <div class="flex"></div>
+    </div>
+  @endif
+  <div id="catalog-content" class="catalog__content box-x"></div>
 </section>
 
 
-<script>
+<script type="module">
+  import {title, price} from '{{ asset('assets/js/utilte/utilte.js') }}'
+
   const resData = @json($res['data']);
 
   function init(max) {
     let div = []
     for (let i = 0; i <= max; i++) {
-      div.push('<div class="catalog__item box-y gap2">')
+      div.push('<div class="catalog__colum box-y gap2">')
     }
     for (let i = 0, loop = 0; i < resData.length; i++, loop++) {
       div[loop] += `
+<div class="catalog__item box-y gap">
           <img src="http://localhost:8000/api/image/${resData[i].image.id}" alt="${resData[i].name}">
-
+          <div class="catalog__item-info box-y gap">
+          <div class="flex"></div>
+<div class="box-x gap">
+<b>
+${title(resData[i].name)}
+${resData[i].id}
+</b>
+<b>
+${price(resData[i].price)}
+</b>
+</div>
+<div class="box-x">
+${resData[i].description}
+</div>
+</div>
+</div>
       `
       console.log(loop)
       if (loop >= max) loop = -1
     }
-    const catalog = document.getElementById('catalog')
+    const catalog = document.getElementById('catalog-content')
     catalog.innerHTML = div[0] + '</div>' + div[1] + '</div>' + div[2] + '</div>'
-
   }
 
   init(2)
