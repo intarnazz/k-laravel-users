@@ -2,7 +2,7 @@
   --textColor: #333;
   --black: #000;
   --white: #fff;
-  --mainColor: #ff5722;
+  --mainColor: #3232FF66
 }
 
 * {
@@ -145,9 +145,11 @@ select {
 .button:hover {
   border: 4px solid rgba(100, 100, 255, .4);
 }
+
 .button__active {
   border: 4px solid rgba(50, 50, 255, .4);
 }
+
 .hover {
   transition: .2s;
 }

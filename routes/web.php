@@ -19,11 +19,19 @@ Route::get('/catalog', function () {
   $request = Request::instance();
   $page = $request->query('page', 1);
   $order = $request->query('order', 'views');
+  $direction = $request->query('direction', 'desc');
   $request->headers->set('skip', ($page - 1) * $count);
   $request->headers->set('take', $count);
   $request->headers->set('order', $order);
+  $request->headers->set('direction', $direction);
   $catalogController = app(CatalogController::class);
   $response = $catalogController->get($request);
   $res = json_decode($response->getContent(), true);
-  return view('catalog', compact('res', 'count', 'page', 'order'));
+  return view('catalog', compact(
+    'res',
+    'count',
+    'page',
+    'order',
+    'direction',
+  ));
 })->name('catalog');

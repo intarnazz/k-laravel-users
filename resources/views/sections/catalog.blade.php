@@ -32,17 +32,8 @@
 <section class="catalog box-y gap">
   @if(Request::is('catalog'))
     <div class="box-x gap">
-      <a href="{{ route('catalog', ['page'=>1, 'order'=>'views']) }}"
-         class="button {{ $order=='views' ? 'button__active' : '' }}  ">
-        По популянонсти
-      </a>
-      <a href="{{ route('catalog', ['page'=>1, 'order'=>'price']) }}" class="button
-      {{ $order=='price' ? 'button__active' : '' }}
-      "
-
-      >
-        По цене
-      </a>
+      @include('components.button.orderBy', ['key'=>'views', 'value'=>'По популярности'])
+      @include('components.button.orderBy', ['key'=>'price', 'value'=>'По цене'])
       <div class="flex"></div>
     </div>
   @endif

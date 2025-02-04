@@ -18,6 +18,7 @@ class CatalogController extends Controller
     $idsArray = $ids ? explode(',', $ids) : range(1, $count);
     $skip = $request->header('skip', 0);
     $take = $request->header('take', 6);
+    $direction = $request->header('direction', 'desc');
     $order = $request->header('order', 'views');
     $response_id = $request->header('responseId', 1);
 //        $price = $request->header('price', '');
@@ -27,8 +28,7 @@ class CatalogController extends Controller
     $catalogs = Catalog::with(['image'])
       ->whereIn('type', $types)
       ->whereIn('id', $idsArray)
-//            ->whereIn('price', $prices)
-      ->orderByDesc($order)
+      ->orderBy($order, $direction)
       ->skip($skip)
       ->take($take)
       ->get();
