@@ -36,6 +36,11 @@ html {
   align-items: center;
 }
 
+.ai{
+  align-items: start;
+}
+
+
 .box-y {
   display: flex;
   flex-direction: column;
@@ -127,6 +132,12 @@ a {
 nav {
   user-select: none;
 }
+
+img {
+  max-width: 500px;
+  max-height: 753px;
+}
+
 
 select {
   cursor: pointer;

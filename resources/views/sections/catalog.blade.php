@@ -34,6 +34,7 @@
     <div class="box-x gap">
       @include('components.button.orderBy', ['key'=>'views', 'value'=>'По популярности'])
       @include('components.button.orderBy', ['key'=>'price', 'value'=>'По цене'])
+      @include('components.button.orderBy', ['key'=>'type', 'value'=>'По типу'])
       <div class="flex"></div>
     </div>
   @endif
@@ -53,7 +54,7 @@
     }
     for (let i = 0, loop = 0; i < resData.length; i++, loop++) {
       div[loop] += `
-<div class="catalog__item box-y gap">
+<a href="http://localhost:8000/catalog/${resData[i].id}" class="catalog__item box-y gap">
           <img src="http://localhost:8000/api/image/${resData[i].image.id}" alt="${resData[i].name}">
           <div class="catalog__item-info box-y gap">
           <div class="flex"></div>
@@ -61,6 +62,7 @@
 <b>
 ${title(resData[i].name)}
 ${resData[i].id}
+${resData[i].type}
 </b>
 <b>
 ${price(resData[i].price)}
@@ -70,7 +72,7 @@ ${price(resData[i].price)}
 ${resData[i].description}
 </div>
 </div>
-</div>
+</a>
       `
       console.log(loop)
       if (loop >= max) loop = -1

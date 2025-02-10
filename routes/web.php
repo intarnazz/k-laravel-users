@@ -24,8 +24,8 @@ Route::get('/catalog', function () {
   $request->headers->set('take', $count);
   $request->headers->set('order', $order);
   $request->headers->set('direction', $direction);
-  $catalogController = app(CatalogController::class);
-  $response = $catalogController->get($request);
+  $app = app(CatalogController::class);
+  $response = $app->get($request);
   $res = json_decode($response->getContent(), true);
   return view('catalog', compact(
     'res',
@@ -35,3 +35,10 @@ Route::get('/catalog', function () {
     'direction',
   ));
 })->name('catalog');
+
+Route::get('/catalog/{catalog}', function (\App\Models\Catalog $catalog) {
+  $catalog->views += 1;
+  $catalog->save();
+  $catalog->full();
+  return view('item', compact('catalog'));
+})->name('item');
