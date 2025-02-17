@@ -13,9 +13,10 @@ services:
             - app-data:/var/www
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
             - app-storage:/var/www/storage
-            - app-resources:/var/www/resources
-            - app-routes:/var/www/routes
-            - app-database:/var/www/database
+            - ./app:/var/www/app
+            - ./resources:/var/www/resources
+            - ./routes:/var/www/routes
+            - ./database:/var/www/database
         networks:
             - app-network
 
@@ -24,7 +25,7 @@ services:
         container_name: demo_webserver
         working_dir: /var/www
         volumes:
-            - app-data:/var/www
+            - ./:/var/www
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
         ports:
             - "8000:80"
@@ -66,6 +67,8 @@ volumes:
     app-data:
         driver: local
     dbdata:
+        driver: local
+    app-app:
         driver: local
     app-storage:
         driver: local

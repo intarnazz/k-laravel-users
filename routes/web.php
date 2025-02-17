@@ -46,3 +46,9 @@ Route::get('/catalog/{catalog}', function (\App\Models\Catalog $catalog) {
 Route::get('/register', function () {
   return view('form');
 })->name('register');
+
+Route::get('/profile', function () {
+  return view('loding');
+})->name('profile');
+
+

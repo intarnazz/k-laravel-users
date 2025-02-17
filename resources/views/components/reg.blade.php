@@ -16,17 +16,19 @@
 </form>
 
 <script type="module">
-  import {reg} from '{{ asset('assets/js/api/api.js') }}'
+  import {log, page} from '{{ asset('assets/js/api/api.js') }}'
 
   document.getElementById('form').addEventListener('submit', async (e) => {
     e.preventDefault()
     const login = document.getElementById('login').value
     const password = document.getElementById('password').value
-    const res = await reg({
+    const res = await log({
       login: login,
       password: password,
     })
-    console.log(res)
+    if (res.success) {
+      window.location.pathname = '/profile'
+    }
   })
 
 </script>

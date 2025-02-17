@@ -16,8 +16,12 @@ Route::get('/catalog', [CatalogController::class, 'get']);
 Route::get('/catalog/{catalog}', [CatalogController::class, 'id']);
 
 Route::middleware('auth:api')->group(function () {
-  Route::post('/logout', [UserController::class, 'logout']);
+  Route::get('/profile', function () {
+    $user = auth()->user();
+    return view('profile', compact('user'));
+  });
 
+  Route::post('/logout', [UserController::class, 'logout']);
   Route::post('/image', [ImageController::class, 'add']);
 });
 

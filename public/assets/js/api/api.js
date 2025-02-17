@@ -6,11 +6,18 @@ import * as PostModel from './post/Post.js'
 
 const Post = PostModel.Post
 
-import * as PostSendFileModel from './post/PostSendFile.js'
+// import * as PostSendFileModel from './post/PostSendFile.js'
+// const PostSendFile = PostSendFileModel.PostSendFile
 
-const PostSendFile = PostSendFileModel.PostSendFile
+import * as GetPageModel from './get/GetPage.js'
+
+const GetPage = GetPageModel.GetPage
 
 const API_URL = 'http://localhost:8000/api/'
+
+export const page = async (url) => {
+  GetPage(`${API_URL}${url}`)
+}
 
 export const auth = async (url, body) => {
   const res = await Post(`${API_URL}${url}`, body)

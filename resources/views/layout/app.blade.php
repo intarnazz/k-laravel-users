@@ -14,3 +14,18 @@
 {{ $slot }}
 </body>
 </html>
+
+<script type="module">
+  import {page} from '{{ asset('assets/js/api/api.js') }}'
+
+  function init() {
+    if (window.location.pathname === "/profile") {
+      page("profile")
+    }
+  }
+
+  // window.onpopstate = function (event) {
+  //   init()
+  // };
+  init()
+</script>
