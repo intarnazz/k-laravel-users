@@ -12,17 +12,7 @@ const PostSendFile = PostSendFileModel.PostSendFile
 
 export const SendImage = async (file) => await PostSendFile(`${API_URL}image`, file)
 
-import * as GetPageModel from './get/GetPage.js'
-
-const GetPage = GetPageModel.GetPage
-
-const URL = 'http://localhost:8000/'
-const API_URL = `${URL}api/`
-
-
-export const page = async (u) => {
-  GetPage(URL, u)
-}
+const API_URL = `http://localhost:8000/api/`
 
 export const auth = async (url, body) => {
   const res = await Post(`${API_URL}${url}`, body)

@@ -1,9 +1,12 @@
-<script type="module">
+<script type="module" defer>
+  document.body.style.display = "none";
   import {token} from '{{ asset('assets/js/user/user.js') }}'
+
   console.log('!token()')
-  if(!token()) {
+  if (!token()) {
     window.location.href = "{{ route('login') }}"
   }
+  document.body.style.display = "block";
 </script>
 
 @component('layout.app')
