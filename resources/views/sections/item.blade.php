@@ -1,6 +1,12 @@
 <style>
   .item__info {
     align-items: start;
+
+    img {
+      max-width: 500px;
+      max-height: 753px;
+
+    }
   }
 </style>
 

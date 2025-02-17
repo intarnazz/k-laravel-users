@@ -18,12 +18,13 @@ html {
   font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   color: var(--textColor);
-  background-color: #fff;
+  background-color: #f3f3f3;
   font-size: 16px;
 }
 
 #app {
   min-height: 100dvh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,10 +35,6 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.ai{
-  align-items: start;
 }
 
 
@@ -51,6 +48,10 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.ai{
+  align-items: start;
 }
 
 .gap {
@@ -67,6 +68,10 @@ html {
 
 .hidden {
   display: none;
+}
+
+.a {
+  text-decoration: underline;
 }
 
 ::-webkit-scrollbar {
@@ -134,8 +139,7 @@ nav {
 }
 
 img {
-  max-width: 500px;
-  max-height: 753px;
+  object-fit: cover;
 }
 
 
