@@ -14,7 +14,7 @@
 
 <section class="welcome box-x">
   <div class="box-y gap">
-    <h1>Unsplash</h1>
+    <h1>Green spase</h1>
     <p>The internet’s source for visuals.
       Powered by creators everywhere.</p>
   </div>
