@@ -28,7 +28,10 @@
       <li>
         <ul class="box-x gap">
           <li>
-            Войти
+            <a href="{{ route('login') }}">
+
+              Войти
+            </a>
           </li>
           <li>
             <a href="{{ route('register') }}">

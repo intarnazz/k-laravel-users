@@ -43,9 +43,13 @@ Route::get('/catalog/{catalog}', function (\App\Models\Catalog $catalog) {
   return view('item', compact('catalog'));
 })->name('item');
 
-Route::get('/register', function () {
+Route::get('/registration', function () {
   return view('form');
 })->name('register');
+
+Route::get('/authorization', function () {
+  return view('form');
+})->name('login');
 
 Route::get('/profile', function () {
   return view('loding');

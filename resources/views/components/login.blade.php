@@ -12,17 +12,18 @@
       <input class="flex" type="password" name="password" id="password">
     </p>
   </div>
-  <button class="button" type="submit">Зарегистрироваться</button>
+  <button class="button" type="submit">войти</button>
 </form>
 
 <script type="module">
-  import {reg} from '{{ asset('assets/js/api/api.js') }}'
+  import {log} from '{{ asset('assets/js/api/api.js') }}'
 
+  console.log('login')
   document.getElementById('form').addEventListener('submit', async (e) => {
     e.preventDefault()
     const login = document.getElementById('login').value
     const password = document.getElementById('password').value
-    const res = await reg({
+    const res = await log({
       login: login,
       password: password,
     })

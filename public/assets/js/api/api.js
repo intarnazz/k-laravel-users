@@ -13,10 +13,12 @@ import * as GetPageModel from './get/GetPage.js'
 
 const GetPage = GetPageModel.GetPage
 
-const API_URL = 'http://localhost:8000/api/'
+const URL = 'http://localhost:8000/'
+const API_URL = `${URL}api/`
 
-export const page = async (url) => {
-  GetPage(`${API_URL}${url}`)
+
+export const page = async (u) => {
+  GetPage(URL, u)
 }
 
 export const auth = async (url, body) => {
