@@ -21,7 +21,8 @@ Route::middleware('auth:api')->group(function () {
     return view('profile', compact('user'));
   });
 
-  Route::post('/logout', [UserController::class, 'logout']);
   Route::post('/image', [ImageController::class, 'add']);
+  Route::get('/user', [UserController::class, 'get']);
+  Route::get('/logout', [UserController::class, 'logout']);
 });
 

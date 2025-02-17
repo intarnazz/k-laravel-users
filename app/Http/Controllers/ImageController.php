@@ -14,20 +14,23 @@ use App\Http\Resources\SuccessResponse;
 
 class ImageController extends Controller
 {
-    function get(Image $image)
-    {
-        return Storage::download($image->path);
-    }
+  function get(Image $image)
+  {
+    return Storage::download($image->path);
+  }
 
-    function add(Request $request)
-    {
-        $file = $request->file('file');
-        $fileName = uniqid('file_', true) . '.' . $file->getClientOriginalExtension();
-        $path = $file->storeAs('public', $fileName);
-        $image = Image::create([
-            'path' => $path,
-        ]);
-        $image->save();
-        return new SuccessResponse($image);
-    }
+  function add(Request $request)
+  {
+    $file = $request->file('file');
+    $fileName = uniqid('file_', true) . '.' . $file->getClientOriginalExtension();
+    $path = $file->storeAs('public', $fileName);
+    $image = Image::create([
+      'path' => $path,
+    ]);
+    $image->save();
+    $user = auth()->user();
+    $user->image_id = $image->id;
+    $user->save();
+    return new SuccessResponse($image);
+  }
 }

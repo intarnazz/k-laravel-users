@@ -11,27 +11,32 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+  use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
 
-    protected $guarded = ['id'];
+  protected $guarded = ['id'];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $hidden = [
-        'password',
-    ];
+  /**
+   * The attributes that should be cast.
+   *
+   * @var array<string, string>
+   */
+  protected $hidden = [
+    'password',
+  ];
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+  public function image()
+  {
+    return $this->belongsTo(related: Image::class);
+  }
+
+  public function setPasswordAttribute($value)
+  {
+    $this->attributes['password'] = Hash::make($value);
+  }
 }

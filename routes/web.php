@@ -52,7 +52,7 @@ Route::get('/authorization', function () {
 })->name('login');
 
 Route::get('/profile', function () {
-  return view('loding');
+  return view('profile');
 })->name('profile');
 
 

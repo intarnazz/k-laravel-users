@@ -11,7 +11,7 @@ export async function GetPage(url, u) {
     .then((response) => response.text()) // Получаем текстовый ответ
     .then((html) => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      document.body.innerHTML = doc.body.innerHTML;
+      document.main.innerHTML = doc.main.innerHTML;
     })
     .catch((e) => {
       throw e

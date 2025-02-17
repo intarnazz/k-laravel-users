@@ -20,7 +20,7 @@
     color: #fff;
   }
 
-  img {
+  .item__img {
     background-color: rgba(0, 0, 0, 0.1);
     min-height: 200px;
     width: 100%;
@@ -55,7 +55,7 @@
     for (let i = 0, loop = 0; i < resData.length; i++, loop++) {
       div[loop] += `
 <a href="http://localhost:8000/catalog/${resData[i].id}" class="catalog__item box-y gap">
-          <img src="http://localhost:8000/api/image/${resData[i].image.id}" alt="${resData[i].name}">
+          <img class="item__img" src="http://localhost:8000/api/image/${resData[i].image.id}" alt="${resData[i].name}">
           <div class="catalog__item-info box-y gap">
           <div class="flex"></div>
 <div class="box-x gap">

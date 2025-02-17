@@ -4,6 +4,7 @@ export async function Get(url, obj = {}) {
     headers: {
       // skip: obj.skip ?? 0,
       // take: obj.take ?? 6,
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`
     }
   })
     .then((response) => response.json())
